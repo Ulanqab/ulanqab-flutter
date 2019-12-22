@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
       ),
       home: MyHomePage(title: 'Ulanqab Home'),
     );
@@ -37,13 +38,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: RandomWords(),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: null,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -67,28 +61,44 @@ class RandomWords extends StatefulWidget {
 
 class RandomWordsState extends State<RandomWords> {
   final List<WordPair> _suggestions = <WordPair>[];
+  final Set<WordPair> _saved = Set<WordPair>();
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
   Widget _buildSuggestions() {
     return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (BuildContext context, int i) {
-        if (i.isOdd) return Divider();
-        final int index = i ~/ 2;
-        if (index >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[index]);
-      }
-    );
+        padding: const EdgeInsets.all(16.0),
+        itemBuilder: (BuildContext context, int i) {
+          if (i.isOdd) return Divider();
+          final int index = i ~/ 2;
+          if (index >= _suggestions.length) {
+            _suggestions.addAll(generateWordPairs().take(10));
+          }
+          return _buildRow(_suggestions[index]);
+        });
   }
-  Widget _buildRow(wordPair ) {
+
+  Widget _buildRow(wordPair) {
+    final bool alreadySaved = _saved.contains(wordPair);
     return ListTile(
       title: Text(
         wordPair.asPascalCase,
         style: _biggerFont,
-      )
+      ),
+      trailing: Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+      ),
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(wordPair);
+          } else {
+            _saved.add(wordPair);
+          }
+        });
+      },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return _buildSuggestions();
