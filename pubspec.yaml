@@ -49,6 +49,7 @@ flutter:
   assets:
     - assets/icons/icon_star_normal.png
     - assets/icons/icon_star_active.png
+    - assets/icons/icon_back.png
     - assets/json/chapterList.json
     - assets/images/cover.png
 

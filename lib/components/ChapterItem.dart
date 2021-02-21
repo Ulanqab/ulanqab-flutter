@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ulanqab/model/Chapter.dart';
 
-
 class ChapterItem extends StatelessWidget {
   final Chapter chapter;
 
@@ -19,6 +18,7 @@ class ChapterItem extends StatelessWidget {
           splashColor: Colors.white70,
           onTap: () {
             print('I will tap');
+            Navigator.pushNamed(context, '/LessonPage');
           },
           child: Padding(
             padding: EdgeInsets.all(16.0),
@@ -29,9 +29,9 @@ class ChapterItem extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),//圆角半径为8
-                    child: Image.network(chapter.chapterPicture, width: 112, height: 180)
-                  ),
+                      borderRadius: BorderRadius.circular(8.0), //圆角半径为8
+                      child: Image.network(chapter.chapterPicture,
+                          width: 112, height: 180)),
                 ),
                 Expanded(
                   child: Column(
@@ -42,8 +42,8 @@ class ChapterItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Flexible(child:
-                            Text(
+                          Flexible(
+                            child: Text(
                               chapter.chapterTitle,
                               maxLines: 1,
                               textAlign: TextAlign.left,
@@ -61,8 +61,8 @@ class ChapterItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Flexible(child:
-                            Text(
+                          Flexible(
+                            child: Text(
                               chapter.courseIndex,
                               maxLines: 1,
                               textAlign: TextAlign.left,
@@ -80,9 +80,33 @@ class ChapterItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0),child: Image(image: AssetImage('assets/icons/icon_star_active.png'), width: 36, height: 36,),),
-                          Padding(padding: EdgeInsets.fromLTRB(4, 0, 0, 0),child: Image(image: AssetImage('assets/icons/icon_star_active.png'), width: 36, height: 36,),),
-                          Padding(padding: EdgeInsets.fromLTRB(4, 0, 0, 0),child: Image(image: AssetImage('assets/icons/icon_star_normal.png'), width: 36, height: 36,),),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            child: Image(
+                              image: AssetImage(
+                                  'assets/icons/icon_star_active.png'),
+                              width: 36,
+                              height: 36,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                            child: Image(
+                              image: AssetImage(
+                                  'assets/icons/icon_star_active.png'),
+                              width: 36,
+                              height: 36,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                            child: Image(
+                              image: AssetImage(
+                                  'assets/icons/icon_star_normal.png'),
+                              width: 36,
+                              height: 36,
+                            ),
+                          ),
                         ],
                       )
                     ],

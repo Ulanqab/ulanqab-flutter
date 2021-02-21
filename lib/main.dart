@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ulanqab/page/HomePage.dart';
+import 'package:ulanqab/page/LessonPage.dart';
 
 void main() {
   runApp(UlanqabApp());
@@ -15,7 +16,11 @@ class UlanqabApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(title: 'Ulanqab'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(title: 'Ulanqab'),
+        '/LessonPage': (context) => LessonPage(title: 'Lesson'),
+      },
     );
   }
 }

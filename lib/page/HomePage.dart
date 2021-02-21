@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ulanqab/components/ChapterItem.dart';
 import 'package:ulanqab/model/Chapter.dart';
 
@@ -22,6 +23,12 @@ Widget _buildChapterWidgets(List<Widget> chapterList) {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+
     final chapterList = <ChapterItem>[];
 
     for (var i = 0; i < 10; i++) {
