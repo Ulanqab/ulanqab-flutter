@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ulanqab/model/Chapter.dart';
+import 'package:ulanqab/components/nested/StarLayout.dart';
 
 class ChapterItem extends StatelessWidget {
   final Chapter chapter;
@@ -81,39 +82,7 @@ class ChapterItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            child: Image(
-                              image: AssetImage(
-                                  'assets/icons/icon_star_active.png'),
-                              width: 36,
-                              height: 36,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
-                            child: Image(
-                              image: AssetImage(
-                                  'assets/icons/icon_star_active.png'),
-                              width: 36,
-                              height: 36,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
-                            child: Image(
-                              image: AssetImage(
-                                  'assets/icons/icon_star_normal.png'),
-                              width: 36,
-                              height: 36,
-                            ),
-                          ),
-                        ],
-                      )
+                      StarLayout(nums: 2),
                     ],
                   ),
                 ),
