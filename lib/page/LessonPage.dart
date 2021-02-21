@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LessonPage extends StatefulWidget {
-
   const LessonPage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -12,30 +11,41 @@ class LessonPage extends StatefulWidget {
 }
 
 class _LessonPage extends State<LessonPage> {
-
   @override
   Widget build(BuildContext context) {
-    
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-
-    final appBar = AppBar(
-      elevation: 0.0,
-      title: Text(
-        widget.title,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 30.0,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Container(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  InkWell(
+                    child: Image(
+                      image: AssetImage('assets/icons/icon_back.png'),
+                      width: 32,
+                      height: 32,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      SystemChrome.setPreferredOrientations([
+                        DeviceOrientation.portraitUp,
+                        DeviceOrientation.portraitDown,
+                      ]);
+                    },
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
-    );
-
-    return Scaffold(
-      appBar: appBar,
-      backgroundColor: Colors.white,
-      body: Center(child: Text('data'),),
     );
   }
 }

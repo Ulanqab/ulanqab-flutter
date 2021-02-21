@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ulanqab/model/Chapter.dart';
 
 class ChapterItem extends StatelessWidget {
@@ -19,6 +20,10 @@ class ChapterItem extends StatelessWidget {
           onTap: () {
             print('I will tap');
             Navigator.pushNamed(context, '/LessonPage');
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.landscapeLeft,
+              DeviceOrientation.landscapeRight,
+            ]);
           },
           child: Padding(
             padding: EdgeInsets.all(16.0),
