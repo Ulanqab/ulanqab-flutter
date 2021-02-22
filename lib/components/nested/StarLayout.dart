@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class StarLayout extends StatelessWidget {
   final num nums;
+  final num align;
 
-  const StarLayout({Key key, this.nums}) : super(key: key);
+  const StarLayout({Key key, this.nums, this.align}) : super(key: key);
 
   Widget _genStarByStatus(bool isActive) {
     const starActive = 'assets/icons/icon_star_active.png';
@@ -19,7 +20,7 @@ class StarLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: align == 0 ? MainAxisAlignment.end : MainAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),

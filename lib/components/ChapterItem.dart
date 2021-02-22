@@ -82,7 +82,7 @@ class ChapterItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      StarLayout(nums: 2),
+                      StarLayout(nums: 2, align: 0,),
                     ],
                   ),
                 ),
