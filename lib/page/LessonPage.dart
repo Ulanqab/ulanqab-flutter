@@ -16,6 +16,10 @@ Widget _lessonItem(context) {
       'https://oss-sts-upload.yunshuxie.com/pic/thadm/material/2020/04/27/16/08/17/bca4817906974f74a7f7e2016e5b8309/ea4c2dd9-ab73-4579-add2-fd897305a869.png';
   return InkWell(
     onTap: () {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
       Navigator.pushNamed(context, '/LearningScene');
     },
     child: Container(
