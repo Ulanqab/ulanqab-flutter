@@ -3,6 +3,8 @@ import 'dart:collection';
 import 'package:dio/dio.dart';
 import 'HeaderInterceptors.dart';
 import 'CookioInterceptors.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 
 /// 网络结果数据
 /// Created by guoshuyu
@@ -27,6 +29,7 @@ class HttpManager {
 
     _dio.interceptors.add(new CookioInterceptors());
 
+    _dio.interceptors.add(CookieManager(CookieJar()));
     // _dio.interceptors.add(new LogsInterceptors());
 
     // _dio.interceptors.add(new ErrorInterceptors(_dio));
